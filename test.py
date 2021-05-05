@@ -20,7 +20,7 @@ class WindowClass(QMainWindow, form_class) :
         self.city.currentIndexChanged.connect(self.choose)
      
     def addcityitem(self):
-        query="SELECT DISTINCT SUBSTRING(소재지도로명주소,5,4) FROM new_schema.table"
+        query="SELECT DISTINCT 분류 FROM new_schema.table"
         cur.execute(query)
         connect.commit()
         
