@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1673</width>
-    <height>615</height>
+    <width>1600</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -531,16 +531,17 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>10</number>
+      <number>15</number>
      </property>
      <item>
       <widget class="QComboBox" name="city"/>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_2"/>
-     </item>
-     <item>
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QListWidget" name="listWidget">
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -553,6 +554,15 @@
      <width>20</width>
      <height>681</height>
     </rect>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="midLineWidth">
+    <number>0</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
