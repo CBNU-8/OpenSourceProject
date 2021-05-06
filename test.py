@@ -3,9 +3,8 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import pymysql #따로 설치해주어야한다.
 
-connect = pymysql.connect(host='localhost', user='hi', password='asd123', db='new_schema',charset='utf8mb4')
+connect = pymysql.connect(host='localhost', user='mySQL유저명', password='mySQL비밀번호', db='스케마이름',charset='utf8mb4')
 cur = connect.cursor()
-
 
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
@@ -17,25 +16,39 @@ class WindowClass(QMainWindow, form_class) :
         super().__init__()
         self.setupUi(self)
         self.addcityitem()
-        self.city.currentIndexChanged.connect(self.choose)
+        self.city.currentIndexChanged.connect(self.citychoose)
+        self.sisul.currentIndexChanged.connect(self.listp)
      
     def addcityitem(self):
-        query="SELECT DISTINCT 분류 FROM new_schema.table"
+        query="SELECT DISTINCT 분류 FROM 스케마이름.테이블이름"
         cur.execute(query)
         connect.commit()
         
         datas = cur.fetchall()
         for data in datas:
             cityname=data[0]
-            self.city.addItem(cityname)
+            self.city.addItem(cityname)               
                               
-                              
-    def choose(self):
-        print("hi")
-                        
+    def citychoose(self):
         
-  
-
+        self.sisul.clear()
+        query="SELECT DISTINCT 개방시설유형구분 FROM 스케마이름.테이블이름 WHERE 분류 like '%s'"%self.city.currentText()
+        cur.execute(query)
+        connect.commit()
+       
+        datas = cur.fetchall() 
+        for data in datas:
+            sisulname=data[0]
+            self.sisul.addItem(sisulname)
+      
+    def listp(self):
+        query="SELECT 개방장소명 FROM 스케마이름.테이블이름 WHERE 개방시설유형구분 like '%s'"%self.sisul.currentText() 
+        cur.execute(query)
+        connect.commit()
+        
+        datas = cur.fetchall()
+        for data in datas:
+            print(data)
         
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
