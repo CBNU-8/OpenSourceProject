@@ -1,0 +1,14 @@
+Anaconda prompt에서
+
+
+(base) C:\Users\admin>cd desktop
+
+(base) C:\Users\admin\Desktop>cd 오픈소스
+
+(base) C:\Users\admin\Desktop\오픈소스>python -m http.server
+
+1,2 번 과정으로 kakao_map.html 저장 된 폴더 이동
+
+3.번 과정으로 localhost8000 생성
+
+http://localhost:8000/kakao_map.html
