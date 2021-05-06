@@ -30,7 +30,6 @@ class WindowClass(QMainWindow, form_class) :
             self.city.addItem(cityname)               
                               
     def citychoose(self):
-        
         self.sisul.clear()
         query="SELECT DISTINCT 개방시설유형구분 FROM 스케마이름.테이블이름 WHERE 분류 like '%s'"%self.city.currentText()
         cur.execute(query)
@@ -42,13 +41,15 @@ class WindowClass(QMainWindow, form_class) :
             self.sisul.addItem(sisulname)
       
     def listp(self):
-        query="SELECT 개방장소명 FROM 스케마이름.테이블이름 WHERE 개방시설유형구분 like '%s'"%self.sisul.currentText() 
+        self.listWidget.clear()
+        query="SELECT 개방시설명, 개방장소명  FROM new_schema.table WHERE 분류 like '%s' and 개방시설유형구분 like '%s'"%(self.city.currentText(),self.sisul.currentText())
         cur.execute(query)
         connect.commit()
         
         datas = cur.fetchall()
         for data in datas:
-            print(data)
+            listname=data[0]
+            self.listWidget.addItem(listname)
         
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
