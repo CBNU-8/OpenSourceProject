@@ -520,30 +520,59 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
       <width>391</width>
-      <height>681</height>
+      <height>71</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>15</number>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="labelAlignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
-     <item>
+     <property name="formAlignment">
+      <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>시/도</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
       <widget class="QComboBox" name="city"/>
      </item>
-     <item>
-      <widget class="QListWidget" name="listWidget">
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="sisul"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>시설유형</string>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>91</y>
+      <width>391</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
    </widget>
   </widget>
   <widget class="Line" name="line">
