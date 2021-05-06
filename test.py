@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import pymysql #따로 설치해주어야한다.
 
-connect = pymysql.connect(host='localhost', user='mySQL유저명', password='mySQL비밀번호', db='스케마이름',charset='utf8mb4')
+connect = pymysql.connect(host='localhost', user='mySQL이름', password='mySQL비밀번호', db='스케마이름',charset='utf8mb4')
 cur = connect.cursor()
 
 #UI파일 연결
@@ -20,31 +20,36 @@ class WindowClass(QMainWindow, form_class) :
         self.sisul.currentIndexChanged.connect(self.listp)
      
     def addcityitem(self):
-        query="SELECT DISTINCT 분류 FROM 스케마이름.테이블이름"
+        query="SELECT DISTINCT 분류 FROM 스케마이름.테이블이름" 
         cur.execute(query)
         connect.commit()
         
+        self.city.addItem('')
         datas = cur.fetchall()
         for data in datas:
             cityname=data[0]
-            self.city.addItem(cityname)               
+            self.city.addItem(cityname)
                               
     def citychoose(self):
         self.sisul.clear()
+        self.sisul.addItem('')
         query="SELECT DISTINCT 개방시설유형구분 FROM 스케마이름.테이블이름 WHERE 분류 like '%s'"%self.city.currentText()
         cur.execute(query)
         connect.commit()
        
-        datas = cur.fetchall() 
+        datas = cur.fetchall()
         for data in datas:
             sisulname=data[0]
             self.sisul.addItem(sisulname)
       
     def listp(self):
         self.listWidget.clear()
-        query="SELECT 개방시설명, 개방장소명  FROM new_schema.table WHERE 분류 like '%s' and 개방시설유형구분 like '%s'"%(self.city.currentText(),self.sisul.currentText())
+        if not self.sisul.currentText():
+              query="SELECT 개방시설명 FROM 스케마이름.테이블이름 WHERE 분류 like '%s' "%(self.city.currentText())
+        else:
+              query="SELECT 개방시설명 FROM 스케마이름.테이블이름 WHERE 분류 like '%s' and 개방시설유형구분 like '%s'"%(self.city.currentText(),self.sisul.currentText())
         cur.execute(query)
-        connect.commit()
+        connect.commit()         
         
         datas = cur.fetchall()
         for data in datas:
