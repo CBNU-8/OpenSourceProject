@@ -526,7 +526,7 @@
       <x>10</x>
       <y>10</y>
       <width>391</width>
-      <height>71</height>
+      <height>97</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -535,6 +535,9 @@
      </property>
      <property name="formAlignment">
       <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+     </property>
+     <property name="verticalSpacing">
+      <number>10</number>
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="label_3">
@@ -546,15 +549,25 @@
      <item row="0" column="1">
       <widget class="QComboBox" name="city"/>
      </item>
-     <item row="1" column="1">
-      <widget class="QComboBox" name="sisul"/>
-     </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>시설유형</string>
        </property>
       </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="sisul"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>검색</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit"/>
      </item>
     </layout>
    </widget>
@@ -565,9 +578,9 @@
     <property name="geometry">
      <rect>
       <x>8</x>
-      <y>91</y>
+      <y>111</y>
       <width>391</width>
-      <height>601</height>
+      <height>581</height>
      </rect>
     </property>
     <property name="frameShadow">
